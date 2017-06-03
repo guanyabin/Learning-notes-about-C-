@@ -1,0 +1,17 @@
+第一个C#程序，输出显示Hello,Wolrd!
+直接上代码：
+//引用命名空间
+using System;
+//声明命名空间0603Test,它里面包含很多类，类里面又有很多方法
+namespace 0603Test{
+   //HelloWorld类，里面有一个Main方法
+   class HelloWorld{
+	//Main方法就是程序的入口，主线程
+	 static void Main(String[] args){
+		//调用Console类的方法，在屏幕上显示语句
+		Console.WriteLine("C#你好，HelloWorld");
+		//增加用户的点击操作，点击后语句才会消失
+		Console.ReadKey();
+	}
+   }
+}
