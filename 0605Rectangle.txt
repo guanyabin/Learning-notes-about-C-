@@ -1,0 +1,78 @@
+using System;
+using System.Text;
+namespace RectangleApplication
+{
+	 
+    class Rectangle
+    {
+        // 成员变量
+        double length;
+        double width;
+		
+		public string UTF8ToGb2312(string str)
+        {
+            string gb2312info = string.Empty;
+
+            Encoding utf8 = Encoding.UTF8;
+            Encoding gb2312 = Encoding.GetEncoding("gb2312");
+
+            byte[] unicodeBytes = utf8.GetBytes(str);
+
+            byte[] asciiBytes = Encoding.Convert(utf8, gb2312, unicodeBytes);
+
+
+           
+            char[] asciiChars = new char[gb2312.GetCharCount(asciiBytes, 0, asciiBytes.Length)];
+            gb2312.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0);
+            gb2312info = new string(asciiChars);
+            return gb2312info;
+ 
+        }
+		 //GB2312转换成UTF8
+        public  string gb2312_utf8(string text)
+        {
+            //声明字符集   
+            System.Text.Encoding utf8, gb2312;
+            //gb2312   
+            gb2312 = System.Text.Encoding.GetEncoding("gb2312");
+            //utf8   
+            utf8 = System.Text.Encoding.GetEncoding("utf-8");
+            byte[] gb;
+            gb = gb2312.GetBytes(text);
+            gb = System.Text.Encoding.Convert(gb2312, utf8, gb);
+            //返回转换后的字符   
+            return utf8.GetString(gb);
+        }
+		
+        public void Acceptdetails()
+        {
+            length = 4.5;    
+            width = 3.5;
+			Console.OutputEncoding = Encoding.GetEncoding(437);
+			Console.OutputEncoding = Encoding.GetEncoding(950);
+			Console.WriteLine("C#你好，HelloWorld");
+        }
+        public double GetArea()
+        {
+            return length * width;
+        }
+        public void Display()
+        {
+            Console.WriteLine("Length: {0}", length);
+            Console.WriteLine("Width: {0}", width);
+            Console.WriteLine("Area: {0}", GetArea());
+        }
+    }
+    
+    class ExecuteRectangle
+    {
+        static void Main(string[] args)
+        {
+            Rectangle r = new Rectangle();
+            r.Acceptdetails();
+            r.Display();
+            Console.ReadLine();
+        }
+    }
+	
+}
