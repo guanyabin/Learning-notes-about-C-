@@ -1,0 +1,7 @@
+装箱和拆箱的过程
+对象类型的数据：Object
+当一个是值类型转换为对象类型时，此过程称为装箱，反过来，对象类型转换为值类型是就是拆箱
+object o;
+o=100;//装箱
+int a=(int)o;//拆箱，只有经过装箱的数据才能拆箱！
+学习的网站是：http://www.runoob.com/csharp/csharp-type-conversion.html
